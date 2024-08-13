@@ -1,30 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyoshbxcwq8rc"]
+[gd_scene load_steps=4 format=3 uid="uid://cyoshbxcwq8rc"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_xn7vu"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_eshwl"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_t80d6"]
-size = Vector3(1.98779, 0.505554, 1.96582)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2awij"]
 radius = 0.2
 height = 1.0
 
+[sub_resource type="Environment" id="Environment_smpvm"]
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 12.09
+volumetric_fog_density = 0.1132
+volumetric_fog_emission_energy = 44.12
+volumetric_fog_length = 0.01
+
 [node name="Node3D" type="Node3D"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(3.31707, 0, 0, 0, 1, 0, 0, 0, 5.64327, 0, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("PlaneMesh_eshwl")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012207, -0.247223, 0.019043)
-shape = SubResource("BoxShape3D_t80d6")
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["player"]]
 script = ExtResource("1_xn7vu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
@@ -34,5 +25,9 @@ shape = SubResource("CapsuleShape3D_2awij")
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.871514, 0)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+[node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958705, 0)
+light_color = Color(1, 0.624341, 0.464373, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_smpvm")
