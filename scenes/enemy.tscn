@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bixn7rondrw3l"]
+
+[ext_resource type="Script" path="res://src/enemy.gd" id="1_ysy6b"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qaukd"]
+radius = 0.7
+height = 2.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_keo57"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2y61w"]
+radius = 8.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_df4aw"]
+radius = 1.326
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_ysy6b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_qaukd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_keo57")
+
+[node name="Vision" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vision"]
+shape = SubResource("SphereShape3D_2y61w")
+
+[node name="Attack" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack"]
+shape = SubResource("SphereShape3D_df4aw")
+
+[connection signal="body_entered" from="Vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="Vision" to="." method="_on_vision_body_exited"]
+[connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
+[connection signal="body_exited" from="Attack" to="." method="_on_attack_body_exited"]

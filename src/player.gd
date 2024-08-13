@@ -3,8 +3,16 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const ROT_SPEED = deg_to_rad(40)
+var hp = 10
+
+func _ready():
+	Globals.player = self
 
 func _physics_process(delta):
+	if hp <= 0:
+		print("morto!")
+	if not is_on_floor():
+		position.y = 0
 	var direction = Vector3.ZERO
 	if Input.is_action_pressed("forward"):
 		direction.z = -1 * SPEED
