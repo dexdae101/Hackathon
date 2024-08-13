@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @export var SPEED: float = 2.0
 @export var DAMAGE: float = 10
-
+var hp = 100
 enum {
 	ATTACK,
 	IDLE,
@@ -28,14 +28,16 @@ func _physics_process(delta):
 		velocity.y = 0
 	match state:
 		IDLE:
-			$AnimatedSprite3D.play("Idle")
+			if $AnimatedSprite3D.animation != "Hurt":
+				$AnimatedSprite3D.play("Idle")
 		ATTACK:
-			$AnimatedSprite3D.play("Idk")
+			if $AnimatedSprite3D.animation != "Hurt":
+				$AnimatedSprite3D.play("Walk")
 			move(Globals.player.position, delta)
 		HIT:
-			$AnimatedSprite3D.play("Attack")
+			if $AnimatedSprite3D.animation != "Hurt":
+				$AnimatedSprite3D.play("Attack")
 			Globals.player.hp -= DAMAGE * delta
-			print(Globals.player.hp)
 			state = ATTACK
 
 func update_state():
@@ -45,7 +47,6 @@ func update_state():
 		state = ATTACK
 	elif not visto:
 		state = IDLE
-	
 
 #collision checks
 func _on_vision_body_entered(body):
@@ -63,3 +64,11 @@ func _on_attack_body_entered(body):
 func _on_attack_body_exited(body):
 	if body.name == "Player":
 		attacco = false
+
+func hurt(damage):
+	hp -= damage
+	if hp <= 0:
+		$AnimatedSprite3D.play("Dead")
+		queue_free() 
+	else:
+		$AnimatedSprite3D.play("Hurt")

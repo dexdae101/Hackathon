@@ -1,11 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cyoshbxcwq8rc"]
 
-[ext_resource type="Script" path="res://src/player.gd" id="1_xn7vu"]
+[ext_resource type="PackedScene" uid="uid://dyak4k8qlkbc8" path="res://scenes/player.tscn" id="1_3raed"]
 [ext_resource type="PackedScene" uid="uid://bixn7rondrw3l" path="res://scenes/enemy.tscn" id="2_4qym8"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2awij"]
-radius = 0.2
-height = 1.0
 
 [sub_resource type="Environment" id="Environment_smpvm"]
 ambient_light_color = Color(1, 1, 1, 1)
@@ -16,39 +12,27 @@ volumetric_fog_length = 0.01
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_72y3q"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_p7ppc"]
+size = Vector3(115.621, 0.489746, 71.0731)
+
 [node name="Node3D" type="Node3D"]
 
-[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29098, 0)
-script = ExtResource("1_xn7vu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.523541, 0)
-shape = SubResource("CapsuleShape3D_2awij")
-
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.871514, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958705, 0)
-light_color = Color(1, 0.624341, 0.464373, 1)
+[node name="Player" parent="." instance=ExtResource("1_3raed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0786192, 0.473121, -0.0107093)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_smpvm")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(3.82723, 0, 0, 0, 1, 0, 0, 0, 3.77189, 0, 0, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(24.4815, 0, 0, 0, 1, 0, 0, 0, 39.2703, 0, 0, 0)
 mesh = SubResource("PlaneMesh_72y3q")
-skeleton = NodePath("../Player")
+skeleton = NodePath("../../Player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4943, -0.255127, -10.219)
+shape = SubResource("BoxShape3D_p7ppc")
 
 [node name="Enemy" parent="." instance=ExtResource("2_4qym8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49206, 2.96881)
-
-[node name="Enemy2" parent="." instance=ExtResource("2_4qym8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49206, 4.88068)
-
-[node name="Enemy3" parent="." instance=ExtResource("2_4qym8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22831, 1.49206, 1.93978)
-
-[node name="Enemy4" parent="." instance=ExtResource("2_4qym8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96627, 1.49206, 1.93978)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0470552, 1.26214, 2.11429)

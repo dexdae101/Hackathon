@@ -4,6 +4,8 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const ROT_SPEED = deg_to_rad(40)
 const START_HP = 10
+const DAMAGE = 10
+
 var hp = START_HP
 
 func _ready():
@@ -24,6 +26,11 @@ func _physics_process(delta):
 		rotation.y += ROT_SPEED*delta
 	if Input.is_action_pressed("right"):
 		rotation.y -= ROT_SPEED*delta
+	if Input.is_action_just_pressed("shoot"):
+		if $RayCast3D.is_colliding():
+			if $RayCast3D.get_collider().name == "Enemy":
+				print("Hurting!")
+				$RayCast3D.get_collider().hurt(DAMAGE)
 	direction = direction.rotated(Vector3.UP, rotation.y)
 	velocity = direction
 	move_and_slide()
