@@ -41,5 +41,14 @@ transform = Transform3D(3.82723, 0, 0, 0, 1, 0, 0, 0, 3.77189, 0, 0, 0)
 mesh = SubResource("PlaneMesh_72y3q")
 skeleton = NodePath("../Player")
 
-[node name="CharacterBody3D2" parent="." instance=ExtResource("2_4qym8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49206, 1.93978)
+[node name="Enemy" parent="." instance=ExtResource("2_4qym8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49206, 2.96881)
+
+[node name="Enemy2" parent="." instance=ExtResource("2_4qym8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49206, 4.88068)
+
+[node name="Enemy3" parent="." instance=ExtResource("2_4qym8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22831, 1.49206, 1.93978)
+
+[node name="Enemy4" parent="." instance=ExtResource("2_4qym8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96627, 1.49206, 1.93978)

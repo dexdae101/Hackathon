@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
-const SPEED = 2.0
-const DAMAGE = 1
+@export var SPEED: float = 2.0
+@export var DAMAGE: float = 10
 
 enum {
 	ATTACK,
@@ -15,21 +15,25 @@ var attacco = false
 
 func move(target, delta):
 	var direction = (target - global_position).normalized()
+	direction.y = 0
 	var desired_velocity = direction * SPEED
 	var steering = (desired_velocity - velocity) * delta * 2.5
 	velocity += steering
 	move_and_slide()
 
 func _physics_process(delta):
+	$AnimatedSprite3D.rotation = Globals.player.rotation
 	update_state()
 	if not is_on_floor():
 		velocity.y = 0
 	match state:
 		IDLE:
-			pass
+			$AnimatedSprite3D.play("Idle")
 		ATTACK:
+			$AnimatedSprite3D.play("Idk")
 			move(Globals.player.position, delta)
 		HIT:
+			$AnimatedSprite3D.play("Attack")
 			Globals.player.hp -= DAMAGE * delta
 			print(Globals.player.hp)
 			state = ATTACK

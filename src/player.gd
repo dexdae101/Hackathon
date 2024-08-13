@@ -3,14 +3,16 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const ROT_SPEED = deg_to_rad(40)
-var hp = 10
+const START_HP = 10
+var hp = START_HP
 
 func _ready():
 	Globals.player = self
 
 func _physics_process(delta):
 	if hp <= 0:
-		print("morto!")
+		position = Vector3.ZERO
+		hp = START_HP
 	if not is_on_floor():
 		position.y = 0
 	var direction = Vector3.ZERO
@@ -27,5 +29,5 @@ func _physics_process(delta):
 	move_and_slide()
 
 func round_excess(n: float):
-	if n - int(n) >0: return n+1
+	if n - int(n) > 0: return n+1
 	else: return n
