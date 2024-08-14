@@ -1,10 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyoshbxcwq8rc"]
+[gd_scene load_steps=5 format=3 uid="uid://cyoshbxcwq8rc"]
 
-[ext_resource type="Script" path="res://src/player.gd" id="1_xn7vu"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2awij"]
-radius = 0.2
-height = 1.0
+[ext_resource type="PackedScene" uid="uid://dyak4k8qlkbc8" path="res://scenes/player.tscn" id="1_3raed"]
 
 [sub_resource type="Environment" id="Environment_smpvm"]
 ambient_light_color = Color(1, 1, 1, 1)
@@ -13,21 +9,46 @@ volumetric_fog_density = 0.1132
 volumetric_fog_emission_energy = 44.12
 volumetric_fog_length = 0.01
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_72y3q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p7ppc"]
+size = Vector3(115.621, 0.489746, 71.0731)
+
 [node name="Node3D" type="Node3D"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["player"]]
-script = ExtResource("1_xn7vu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.523541, 0)
-shape = SubResource("CapsuleShape3D_2awij")
-
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.871514, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958705, 0)
-light_color = Color(1, 0.624341, 0.464373, 1)
+[node name="Player" parent="." instance=ExtResource("1_3raed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0786192, 0.473121, -0.0107093)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_smpvm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(24.4815, 0, 0, 0, 1, 0, 0, 0, 39.2703, 0, 0, 0)
+mesh = SubResource("PlaneMesh_72y3q")
+skeleton = NodePath("../../Player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4943, -0.255127, -10.219)
+shape = SubResource("BoxShape3D_p7ppc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = 1227.0
+offset_top = 795.0
+offset_right = 1278.0
+offset_bottom = 1020.0
+rotation = -0.87461
+scale = Vector2(1.28, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 80.0
+offset_right = 83.0
+offset_bottom = 103.0
+rotation = 1.60321
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "\"Shotgun\""

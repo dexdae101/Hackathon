@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyak4k8qlkbc8"]
+
+[ext_resource type="Script" path="res://src/player.gd" id="1_2k5rx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2awij"]
+radius = 0.2
+height = 1.0
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29098, 0)
+script = ExtResource("1_2k5rx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_2awij")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.235599, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958705, 0)
+light_color = Color(1, 0.624341, 0.464373, 1)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -10)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
