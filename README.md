@@ -1,4 +1,3 @@
 # Hackathon
-## Credits
-### Sprites
-* https://thepixelalchemist.itch.io/goblin-pack
+## Sources
+* [Goblin's Sprite sheet](https://thepixelalchemist.itch.io/goblin-pack)
