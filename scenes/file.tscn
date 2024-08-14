@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy3e468s4lp1m"]
+
+[ext_resource type="Texture2D" uid="uid://dmullwlmjjpeg" path="res://textures/files/application-x-generic.svg" id="1_6uikq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8d7du"]
+size = Vector3(0.888428, 1.38921, 0.001)
+
+[node name="File" type="Node3D"]
+
+[node name="Sprite2D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.824077, 0)
+texture = ExtResource("1_6uikq")
+
+[node name="Label3D" type="Label3D" parent="Sprite2D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+text = "file.pino"
+
+[node name="Area3D" type="Area3D" parent="Sprite2D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.824077, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite2D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.694, -0.0102422)
+shape = SubResource("BoxShape3D_8d7du")
