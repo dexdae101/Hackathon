@@ -28,14 +28,14 @@ func _physics_process(delta):
 		velocity.y = 0
 	match state:
 		IDLE:
-			if $AnimatedSprite3D.animation != "Hurt":
+			if check_animation():
 				$AnimatedSprite3D.play("Idle")
 		ATTACK:
-			if $AnimatedSprite3D.animation != "Hurt":
+			if check_animation():
 				$AnimatedSprite3D.play("Walk")
 			move(Globals.player.position, delta)
 		HIT:
-			if $AnimatedSprite3D.animation != "Hurt":
+			if check_animation():
 				$AnimatedSprite3D.play("Attack")
 			Globals.player.hp -= DAMAGE * delta
 			state = ATTACK
@@ -47,6 +47,11 @@ func update_state():
 		state = ATTACK
 	elif not visto:
 		state = IDLE
+
+func check_animation():
+	if not $AnimatedSprite3D.animation in ["Hurt", "Die"] : return true
+	else: 
+		return not $AnimatedSprite3D.is_playing()
 
 #collision checks
 func _on_vision_body_entered(body):
@@ -69,6 +74,6 @@ func hurt(damage):
 	hp -= damage
 	if hp <= 0:
 		$AnimatedSprite3D.play("Dead")
-		queue_free() 
+		queue_free()
 	else:
 		$AnimatedSprite3D.play("Hurt")

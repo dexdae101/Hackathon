@@ -333,9 +333,10 @@ shape = SubResource("SphereShape3D_df4aw")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.173458, -0.419745, 0)
 sprite_frames = SubResource("SpriteFrames_xuqwc")
-animation = &"Hurt"
+animation = &"Idle"
 
 [connection signal="body_entered" from="Vision" to="." method="_on_vision_body_entered"]
 [connection signal="body_exited" from="Vision" to="." method="_on_vision_body_exited"]
 [connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
 [connection signal="body_exited" from="Attack" to="." method="_on_attack_body_exited"]
+[connection signal="animation_finished" from="AnimatedSprite3D" to="." method="_on_animated_sprite_3d_animation_finished"]

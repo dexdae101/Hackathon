@@ -19,22 +19,18 @@ func _physics_process(delta):
 		position.y = 0
 	var direction = Vector3.ZERO
 	if Input.is_action_pressed("forward"):
-		direction.z = -1 * SPEED
+		direction.z = -1
 	if Input.is_action_pressed("backwards"):
-		direction.z = 1 * SPEED
+		direction.z = 1
 	if Input.is_action_pressed("left"):
 		rotation.y += ROT_SPEED*delta
 	if Input.is_action_pressed("right"):
 		rotation.y -= ROT_SPEED*delta
 	if Input.is_action_just_pressed("shoot"):
 		if $RayCast3D.is_colliding():
-			if $RayCast3D.get_collider().name == "Enemy":
-				print("Hurting!")
+			if $RayCast3D.get_collider().name == "Enemy" and $Timer.time_left == 0:
 				$RayCast3D.get_collider().hurt(DAMAGE)
+				$Timer.start()
 	direction = direction.rotated(Vector3.UP, rotation.y)
-	velocity = direction
+	velocity = direction * SPEED
 	move_and_slide()
-
-func round_excess(n: float):
-	if n - int(n) > 0: return n+1
-	else: return n

@@ -22,3 +22,6 @@ light_color = Color(1, 0.624341, 0.464373, 1)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -10)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
