@@ -3,8 +3,10 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const ROT_SPEED = deg_to_rad(40)
-const START_HP = 10
+const START_HP = 100
 const DAMAGE = 10
+
+signal shot
 
 var hp = START_HP
 
@@ -26,11 +28,12 @@ func _physics_process(delta):
 		rotation.y += ROT_SPEED*delta
 	if Input.is_action_pressed("right"):
 		rotation.y -= ROT_SPEED*delta
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") and $Timer.time_left == 0:
+		emit_signal("shot")
 		if $RayCast3D.is_colliding():
-			if $RayCast3D.get_collider().name == "Enemy" and $Timer.time_left == 0:
+			$Timer.start()
+			if $RayCast3D.get_collider().is_in_group("enemy"):
 				$RayCast3D.get_collider().hurt(DAMAGE)
-				$Timer.start()
 	direction = direction.rotated(Vector3.UP, rotation.y)
 	velocity = direction * SPEED
 	move_and_slide()

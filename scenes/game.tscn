@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyoshbxcwq8rc"]
+[gd_scene load_steps=13 format=3 uid="uid://cyoshbxcwq8rc"]
 
 [ext_resource type="PackedScene" uid="uid://dyak4k8qlkbc8" path="res://scenes/player.tscn" id="1_3raed"]
+[ext_resource type="Texture2D" uid="uid://bv402ta8k7te3" path="res://textures/sium.png" id="2_n11j3"]
+[ext_resource type="Script" path="res://src/pistola.gd" id="3_wmqy8"]
+[ext_resource type="PackedScene" uid="uid://bixn7rondrw3l" path="res://scenes/enemy.tscn" id="4_ich5w"]
 
 [sub_resource type="Environment" id="Environment_smpvm"]
 ambient_light_color = Color(1, 1, 1, 1)
@@ -13,6 +16,45 @@ volumetric_fog_length = 0.01
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p7ppc"]
 size = Vector3(115.621, 0.489746, 71.0731)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvet0"]
+atlas = ExtResource("2_n11j3")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0y6e"]
+atlas = ExtResource("2_n11j3")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghmln"]
+atlas = ExtResource("2_n11j3")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k645d"]
+atlas = ExtResource("2_n11j3")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_axf5t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvet0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0y6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghmln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k645d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvet0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Node3D" type="Node3D"]
 
@@ -33,22 +75,16 @@ skeleton = NodePath("../../Player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4943, -0.255127, -10.219)
 shape = SubResource("BoxShape3D_p7ppc")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Hud" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-offset_left = 1227.0
-offset_top = 795.0
-offset_right = 1278.0
-offset_bottom = 1020.0
-rotation = -0.87461
-scale = Vector2(1.28, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hud"]
+position = Vector2(1398, 773)
+scale = Vector2(2.2875, 2.9625)
+sprite_frames = SubResource("SpriteFrames_axf5t")
+speed_scale = 2.0
+script = ExtResource("3_wmqy8")
 
-[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
-layout_mode = 0
-offset_left = 43.0
-offset_top = 80.0
-offset_right = 83.0
-offset_bottom = 103.0
-rotation = 1.60321
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "\"Shotgun\""
+[node name="Enemy" parent="." instance=ExtResource("4_ich5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27245, 10.6804)
+
+[connection signal="shot" from="Player" to="Hud/AnimatedSprite2D" method="_on_player_shot"]
