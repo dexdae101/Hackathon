@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cyoshbxcwq8rc"]
 
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_3raed"]
+[ext_resource type="PackedScene" uid="uid://dyak4k8qlkbc8" path="res://scenes/player.tscn" id="1_3raed"]
 [ext_resource type="PackedScene" uid="uid://dy3e468s4lp1m" path="res://scenes/file.tscn" id="2_gsddn"]
 
 [sub_resource type="Environment" id="Environment_smpvm"]
@@ -55,4 +55,4 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "\"Shotgun\""
 
 [node name="File" parent="." instance=ExtResource("2_gsddn")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.142128, -1.87504)
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0.142128, -1.87504)
