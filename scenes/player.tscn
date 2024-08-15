@@ -24,4 +24,5 @@ light_color = Color(1, 0.624341, 0.464373, 1)
 target_position = Vector3(0, 0, -10)
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true

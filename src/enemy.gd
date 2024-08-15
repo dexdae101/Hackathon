@@ -52,7 +52,14 @@ func check_animation():
 	if not $AnimatedSprite3D.animation in ["Hurt", "Die"] : return true
 	else: 
 		return not $AnimatedSprite3D.is_playing()
-
+		
+func hurt(damage):
+	hp -= damage
+	if hp <= 0:
+		$AnimatedSprite3D.play("Dead")
+		queue_free()
+	else:
+		$AnimatedSprite3D.play("Hurt")
 #collision checks
 func _on_vision_body_entered(body):
 	if body.name == "Player":
@@ -69,11 +76,3 @@ func _on_attack_body_entered(body):
 func _on_attack_body_exited(body):
 	if body.name == "Player":
 		attacco = false
-
-func hurt(damage):
-	hp -= damage
-	if hp <= 0:
-		$AnimatedSprite3D.play("Dead")
-		queue_free()
-	else:
-		$AnimatedSprite3D.play("Hurt")
