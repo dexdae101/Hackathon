@@ -1,4 +1,4 @@
-extends Node3D
+extends StaticBody3D
 
 @export var file_name :String = "pino.zip"
 @export var file_size :int = 5000			#KB
@@ -50,7 +50,7 @@ func _ready():
 
 	$Sprite3D.texture = load("res://textures/files/" + file_icons_key)
 	sprite_texture_image = Image.load_from_file("res://textures/files/" + file_icons_key)
-	$Sprite3D/Label3D.text = file_name
+	$Label3D.text = file_name
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -37,3 +37,6 @@ func _physics_process(delta):
 	direction = direction.rotated(Vector3.UP, rotation.y)
 	velocity = direction * SPEED
 	move_and_slide()
+
+func hurt(damage):
+	hp -= damage

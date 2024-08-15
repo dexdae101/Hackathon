@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const SPEED: float = 2.0
-const DAMAGE: float = 10
+const DAMAGE: int = 10
 enum {
 	ATTACK,
 	IDLE,
@@ -25,8 +25,10 @@ func _physics_process(delta):
 			play_animation("Walk")
 			move(target.position, delta)
 		HIT:
-			play_animation("Attack")
-			target.hp -= DAMAGE * delta
+			if $Timer.time_left == 0:
+				play_animation("Attack")
+				target.hurt(DAMAGE)
+				$Timer.start()
 			attacco = false
 
 func choose_target():
