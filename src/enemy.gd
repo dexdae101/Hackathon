@@ -6,12 +6,12 @@ var hp = 100
 enum {
 	ATTACK,
 	IDLE,
-	HIT
+	HIT,
 }
 
 var state = IDLE
-var visto = false
 var attacco = false
+var target
 
 func move(target, delta):
 	var direction = (target - global_position).normalized()
@@ -21,7 +21,27 @@ func move(target, delta):
 	velocity += steering
 	move_and_slide()
 
+func choose_target():
+	if $Vision.get_overlapping_bodies() != []:
+		for i in $Vision.get_overlapping_bodies():
+			if i.name == "Player":
+				target = i
+				break
+			elif i.is_in_group("file"):
+				if target != null:
+					if distance_to(i) < distance_to(target):
+						target = i
+				else:
+					target = i
+			else:
+				target = null
+func choose_enemy():
+	if $Attack.get_overlapping_bodies() != [] and $Attack.get_overlapping_bodies().has(target):
+		attacco = true
+	else: attacco = false
 func _physics_process(delta):
+	choose_target()
+	choose_enemy()
 	$AnimatedSprite3D.rotation = Globals.player.rotation
 	update_state()
 	if not is_on_floor():
@@ -33,19 +53,19 @@ func _physics_process(delta):
 		ATTACK:
 			if check_animation():
 				$AnimatedSprite3D.play("Walk")
-			move(Globals.player.position, delta)
+			move(target.position, delta)
 		HIT:
 			if check_animation():
 				$AnimatedSprite3D.play("Attack")
-			Globals.player.hp -= DAMAGE * delta
-			state = ATTACK
-
+			target.hp -= DAMAGE * delta
+			attacco = false
+			
 func update_state():
 	if attacco:
 		state = HIT
-	elif visto:
+	elif target != null:
 		state = ATTACK
-	elif not visto:
+	else:
 		state = IDLE
 
 func check_animation():
@@ -60,19 +80,6 @@ func hurt(damage):
 		queue_free()
 	else:
 		$AnimatedSprite3D.play("Hurt")
-#collision checks
-func _on_vision_body_entered(body):
-	if body.name == "Player":
-		visto = true
-
-func _on_vision_body_exited(body):
-	if body.name == "Player":
-		visto = false
-
-func _on_attack_body_entered(body):
-	if body.name == "Player":
-		attacco = true
-
-func _on_attack_body_exited(body):
-	if body.name == "Player":
-		attacco = false
+		
+func distance_to(body):
+	return (body.position - global_position).length()

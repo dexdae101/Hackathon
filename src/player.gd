@@ -32,7 +32,7 @@ func _physics_process(delta):
 		emit_signal("shot")
 		if $RayCast3D.is_colliding():
 			$Timer.start()
-			if $RayCast3D.get_collider().name == "Enemy":
+			if $RayCast3D.get_collider().is_in_group("enemy"):
 				$RayCast3D.get_collider().hurt(DAMAGE)
 	direction = direction.rotated(Vector3.UP, rotation.y)
 	velocity = direction * SPEED

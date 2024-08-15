@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cyoshbxcwq8rc"]
+[gd_scene load_steps=13 format=3 uid="uid://cyoshbxcwq8rc"]
 
 [ext_resource type="PackedScene" uid="uid://dyak4k8qlkbc8" path="res://scenes/player.tscn" id="1_3raed"]
 [ext_resource type="Texture2D" uid="uid://bv402ta8k7te3" path="res://textures/sium.png" id="2_n11j3"]
 [ext_resource type="Script" path="res://src/pistola.gd" id="3_wmqy8"]
+[ext_resource type="PackedScene" uid="uid://bixn7rondrw3l" path="res://scenes/enemy.tscn" id="4_ich5w"]
 
 [sub_resource type="Environment" id="Environment_smpvm"]
 ambient_light_color = Color(1, 1, 1, 1)
@@ -82,5 +83,8 @@ scale = Vector2(2.2875, 2.9625)
 sprite_frames = SubResource("SpriteFrames_axf5t")
 speed_scale = 2.0
 script = ExtResource("3_wmqy8")
+
+[node name="Enemy" parent="." instance=ExtResource("4_ich5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27245, 10.6804)
 
 [connection signal="shot" from="Player" to="Hud/AnimatedSprite2D" method="_on_player_shot"]
