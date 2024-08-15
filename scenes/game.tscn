@@ -75,6 +75,7 @@ skeleton = NodePath("../../Player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4943, -0.255127, -10.219)
 shape = SubResource("BoxShape3D_p7ppc")
 
+
 [node name="Hud" type="CanvasLayer" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hud"]
