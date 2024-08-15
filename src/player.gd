@@ -3,7 +3,7 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const ROT_SPEED = deg_to_rad(40)
-const START_HP = 10
+const START_HP = 100
 const DAMAGE = 10
 
 signal shot
