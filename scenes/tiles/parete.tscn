@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmgdxif8nyiuy"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_rj7pe"]
+size = Vector2(0.5, 2)
+
+[node name="Parete" type="StaticBody3D"]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("QuadMesh_rj7pe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]

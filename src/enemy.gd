@@ -2,7 +2,6 @@ extends CharacterBody3D
 
 const SPEED: float = 2.0
 const DAMAGE: float = 10
-var hp = 100
 enum {
 	ATTACK,
 	IDLE,
@@ -11,6 +10,7 @@ enum {
 
 var state = IDLE
 var attacco = false
+var hp = 100
 var target
 
 func _physics_process(delta):
@@ -48,6 +48,7 @@ func choose_target():
 			else:
 				target = null
 func choose_enemy():
+	#check if target is in the Attack zone
 	var bodies = $Attack.get_overlapping_bodies()
 	if bodies != [] and bodies.has(target): attacco = true
 	else: attacco = false
@@ -67,6 +68,7 @@ func update_state():
 	else:
 		state = IDLE
 func play_animation(animation: String):
+	#wait for animations in wait_list to finish before playing the next animation
 	const wait_list = ["Hurt", "Die"]
 	if not $AnimatedSprite3D.animation in wait_list or not $AnimatedSprite3D.is_playing():
 		$AnimatedSprite3D.play(animation)

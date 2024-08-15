@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dyak4k8qlkbc8" path="res://scenes/player.tscn" id="1_3raed"]
 [ext_resource type="Texture2D" uid="uid://bv402ta8k7te3" path="res://textures/sium.png" id="2_n11j3"]
 [ext_resource type="Script" path="res://src/pistola.gd" id="3_wmqy8"]
-[ext_resource type="PackedScene" uid="uid://bixn7rondrw3l" path="res://scenes/enemy.tscn" id="4_ich5w"]
+[ext_resource type="PackedScene" uid="uid://dy3e468s4lp1m" path="res://scenes/file.tscn" id="4_of1m7"]
 
 [sub_resource type="Environment" id="Environment_smpvm"]
 ambient_light_color = Color(1, 1, 1, 1)
@@ -75,7 +75,6 @@ skeleton = NodePath("../../Player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4943, -0.255127, -10.219)
 shape = SubResource("BoxShape3D_p7ppc")
 
-
 [node name="Hud" type="CanvasLayer" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hud"]
@@ -85,7 +84,7 @@ sprite_frames = SubResource("SpriteFrames_axf5t")
 speed_scale = 2.0
 script = ExtResource("3_wmqy8")
 
-[node name="Enemy" parent="." instance=ExtResource("4_ich5w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27245, 10.6804)
+[node name="File" parent="." instance=ExtResource("4_of1m7")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0.404842, -1.99725)
 
 [connection signal="shot" from="Player" to="Hud/AnimatedSprite2D" method="_on_player_shot"]
