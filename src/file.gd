@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-@export var file_name :String = "pino.zip"
+@export var file_name :String = "pino.fw"
 @export var file_size :int = 5000			#KB
 var sprite_texture_image :Image
 var hp :int = file_size
@@ -36,7 +36,6 @@ var file_icons = {
 }
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	var file_ext = file_name.split('.')[-1]
 	var file_icons_key
@@ -53,13 +52,12 @@ func _ready():
 	$Label3D.text = file_name
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	rotation = Globals.player.rotation
 
 
 func _on_area_3d_body_entered(body):
-	hurt(10)
+	pass
 
 func hurt(damage):
 	hp -= damage
