@@ -9,7 +9,7 @@ func _ready():
 	var roofs = []
 	var walls = []
 	var files = []
-	var room_matrix = RoomGenerator.GenerateMatrix(5, 5)
+	var room_matrix = RoomGenerator.GenerateMatrix(10, 10)
 	RoomGenerator.DrawMatrix(room_matrix)
 	const door = preload("res://scenes/tiles/door.tscn")
 	const floor = preload("res://scenes/tiles/floor.tscn")

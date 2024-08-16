@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-@export var file_name :String = "pino.zip"
+@export var file_name :String = "pino.fw"
 @export var file_size :int = 5000			#KB
 var sprite_texture_image :Image
 var hp :int = file_size
@@ -59,7 +59,7 @@ func _process(delta):
 
 
 func _on_area_3d_body_entered(body):
-	hurt(10)
+	pass
 
 func hurt(damage):
 	hp -= damage
