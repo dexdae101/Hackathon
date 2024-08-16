@@ -8,3 +8,4 @@ Doomautilus is a real-time first-person file explorer (FPFE). You’ll be explor
 * Fire: f
 ## Sources
 * [Walls texture](https://foxh3ad.itch.io/foxtex)
+* [Pistol sprite-sheet](https://rekkimaru.itch.io/fps-gun-sprites)
