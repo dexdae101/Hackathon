@@ -338,6 +338,7 @@ sprite_frames = SubResource("SpriteFrames_xuqwc")
 animation = &"Idle"
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="Vision" to="." method="_on_vision_body_entered"]
 [connection signal="body_exited" from="Vision" to="." method="_on_vision_body_exited"]
