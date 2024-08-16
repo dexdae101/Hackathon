@@ -1,4 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://crqrvqgyjkp4l"]
+[gd_scene load_steps=5 format=3 uid="uid://crqrvqgyjkp4l"]
+
+[ext_resource type="Texture2D" uid="uid://c0oddqdaf41hn" path="res://textures/floors/black/MBBH1_1.png" id="1_wjj7w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46c6y"]
+albedo_texture = ExtResource("1_wjj7w")
 
 [sub_resource type="QuadMesh" id="QuadMesh_fq06m"]
 size = Vector2(2, 2)
@@ -10,6 +15,7 @@ size = Vector3(2, 0, 2)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.5, 0)
+material_override = SubResource("StandardMaterial3D_46c6y")
 mesh = SubResource("QuadMesh_fq06m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

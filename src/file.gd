@@ -36,7 +36,6 @@ var file_icons = {
 }
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	var file_ext = file_name.split('.')[-1]
 	var file_icons_key
@@ -53,7 +52,6 @@ func _ready():
 	$Label3D.text = file_name
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	rotation = Globals.player.rotation
 

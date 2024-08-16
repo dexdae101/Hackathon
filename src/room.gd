@@ -9,6 +9,7 @@ func _ready():
 	var roofs = []
 	var walls = []
 	var files = []
+
 	var room_matrix = RoomGenerator.GenerateMatrix(10, 10)
 	RoomGenerator.DrawMatrix(room_matrix)
 	const door = preload("res://scenes/tiles/door.tscn")
@@ -24,6 +25,10 @@ func _ready():
 					floors.append(floor.instantiate())
 					add_child(floors[-1])
 					floors[-1].position = Vector3i(j * tile_center, 0, i * tile_center)
+
+					roofs.append(roof.instantiate())
+					add_child(roofs[-1])
+					roofs[-1].position = Vector3i(j * tile_center, 0, i * tile_center)
 				2:
 					walls.append(wall.instantiate())
 					add_child(walls[-1])
@@ -49,6 +54,10 @@ func _ready():
 					floors.append(floor.instantiate())
 					add_child(floors[-1])
 					floors[-1].position = Vector3i(j * tile_center, 0, i * tile_center)
+
+					roofs.append(roof.instantiate())
+					add_child(roofs[-1])
+					roofs[-1].position = Vector3i(j * tile_center, 0, i * tile_center)
 
 					files.append(file.instantiate())
 					add_child(files[-1])

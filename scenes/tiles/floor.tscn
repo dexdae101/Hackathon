@@ -1,4 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bibckf2qs54du"]
+[gd_scene load_steps=5 format=3 uid="uid://bibckf2qs54du"]
+
+[ext_resource type="Texture2D" uid="uid://2tpunsdvtcwe" path="res://textures/floors/black/MBLL2_1.png" id="1_ke34h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a33tk"]
+albedo_texture = ExtResource("1_ke34h")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yuged"]
 
@@ -8,6 +13,7 @@ size = Vector3(2, 0, 2)
 [node name="Floor" type="StaticBody3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_a33tk")
 mesh = SubResource("PlaneMesh_yuged")
 skeleton = NodePath("../..")
 
