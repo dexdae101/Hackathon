@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://cyoshbxcwq8rc"]
+[gd_scene load_steps=15 format=3 uid="uid://cyoshbxcwq8rc"]
 
 [ext_resource type="PackedScene" uid="uid://dyak4k8qlkbc8" path="res://scenes/player.tscn" id="1_3raed"]
 [ext_resource type="Texture2D" uid="uid://bv402ta8k7te3" path="res://textures/sium.png" id="2_n11j3"]
 [ext_resource type="Script" path="res://src/pistola.gd" id="3_wmqy8"]
 [ext_resource type="PackedScene" uid="uid://bcje2qta0jb2k" path="res://scenes/file.tscn" id="4_of1m7"]
 [ext_resource type="PackedScene" uid="uid://bixn7rondrw3l" path="res://scenes/enemy.tscn" id="5_3cry0"]
+[ext_resource type="PackedScene" uid="uid://du25cfpb51xrh" path="res://scenes/room.tscn" id="6_g20ds"]
 
 [sub_resource type="Environment" id="Environment_smpvm"]
 ambient_light_color = Color(1, 1, 1, 1)
@@ -90,5 +91,8 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.30677, 0.298533, -2.1
 
 [node name="Enemy" parent="." instance=ExtResource("5_3cry0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95259, 1.27175, -11.1001)
+
+[node name="Room" parent="." instance=ExtResource("6_g20ds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34847, 0, 0)
 
 [connection signal="shot" from="Player" to="Hud/AnimatedSprite2D" method="_on_player_shot"]
