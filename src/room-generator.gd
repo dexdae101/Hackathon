@@ -45,9 +45,7 @@ static func AddSurroundingWalls(Matrix, x, y, Walls):							#add the surrounding
 
 static func DrawMatrix(Matrix):								#draws the maze
 	for i in Matrix:
-		for j in i:
-			print(j)
-		print()
+		print(i)
 
 static func CountPathNearEdge(Matrix, Edge, Paths):			#counts the path segments next to one of the edges of the maze, Edge is 0 or 1 or 2 and represent the left,up,right border
 	var count = 0											#Paths is a list of path segments next to the edge selected, it should be an empty list, it will be populated during function excution

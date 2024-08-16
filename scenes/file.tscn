@@ -4,15 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://bh535oelinas1" path="res://textures/files/application-x-generic.png" id="2_7rdsg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4sgeo"]
-size = Vector3(8.01335, 9.12843, 4.39777)
+size = Vector3(8.01335, 11.3625, 4.39777)
 
 [node name="File" type="StaticBody3D" groups=["enemy", "file"]]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.25, 0)
 collision_layer = 2
 script = ExtResource("1_6kn0i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22802, 4.32221, -0.201431)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.177, 0)
 shape = SubResource("BoxShape3D_4sgeo")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]

@@ -7,15 +7,15 @@ size = Vector2(4, 1)
 size = Vector3(4, 1, 0)
 
 [sub_resource type="QuadMesh" id="QuadMesh_p34lt"]
-size = Vector2(4, 1.5)
+size = Vector2(4, 2.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vg8xb"]
 size = Vector3(4, 1.5, 0)
 
-[node name="Corridoio" type="StaticBody3D"]
+[node name="Passage" type="StaticBody3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0.005, -2)
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0, -2)
 mesh = SubResource("QuadMesh_th687")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
@@ -31,7 +31,7 @@ transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 
 shape = SubResource("BoxShape3D_g0bwq")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 0.625, -2)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 1.25, -2)
 mesh = SubResource("QuadMesh_p34lt")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
@@ -39,7 +39,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 
 shape = SubResource("BoxShape3D_vg8xb")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0.625, -2)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 1.25, -2)
 mesh = SubResource("QuadMesh_p34lt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

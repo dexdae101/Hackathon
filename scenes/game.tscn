@@ -69,7 +69,7 @@ environment = SubResource("Environment_smpvm")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(24.4815, 0, 0, 0, 1, 0, 0, 0, 39.2703, 0, 0, 0)
+transform = Transform3D(63.5541, 0, 0, 0, 1, 0, 0, 0, 72.3744, 0, 0, 0)
 mesh = SubResource("PlaneMesh_72y3q")
 skeleton = NodePath("../../Player")
 
@@ -87,12 +87,11 @@ speed_scale = 2.0
 script = ExtResource("3_wmqy8")
 
 [node name="File" parent="." instance=ExtResource("4_of1m7")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.30677, 0.298533, -2.17234)
 
 [node name="Enemy" parent="." instance=ExtResource("5_3cry0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95259, 1.27175, -11.1001)
 
 [node name="Room" parent="." instance=ExtResource("6_g20ds")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34847, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39658, 0, 0)
 
 [connection signal="shot" from="Player" to="Hud/AnimatedSprite2D" method="_on_player_shot"]
