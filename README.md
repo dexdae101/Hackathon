@@ -6,5 +6,4 @@ Doomautilus is a real-time first-person file explorer (FPFE). You’ll be explor
 * Open files: Space
 * Fire: f
 ## Sources
-* [Goblin's Sprite sheet](https://thepixelalchemist.itch.io/goblin-pack)
 * [Walls texture](https://foxh3ad.itch.io/foxtex)
